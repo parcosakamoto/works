@@ -1,0 +1,14 @@
+.text {
+  padding: 1rem;
+  border: solid 2px currentColor;
+  color: darkblue;
+}
+
+.title {
+  font-size: 5rem;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+}
+/*# sourceMappingURL=hero.module.css.map */

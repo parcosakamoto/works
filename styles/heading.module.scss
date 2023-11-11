@@ -1,0 +1,40 @@
+.heading {
+  font-family: var(--font-mincho);
+  letter-spacing: 0.1em;
+  writing-mode: vertical-rl;
+  font-feature-settings: "vrt2" on;
+  //color: $text-color;
+  font-weight: 100;
+  line-height: 1.4;
+  float: left;
+  @media (min-width: 835px) {
+    margin: 0 auto 0 -100px;
+  }
+
+  @media (max-width: 834px) {
+    margin: 0 auto;
+    padding: 0.5rem 1rem 0 0;
+    float: none;
+  }
+  a {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-decoration: none;
+    .en {
+      font-feature-settings: initial;
+      font-size: 0.725rem;
+      margin-top: 5px;
+      @media (max-width: 599px) {
+        font-size: 0.65rem;
+      }
+    }
+    .jp {
+      font-size: 1.5rem;
+      letter-spacing: 0.15em;
+      @media (max-width: 599px) {
+        font-size: 1.25rem;
+      }
+    }
+  }
+}

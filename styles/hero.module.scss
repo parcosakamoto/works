@@ -1,0 +1,42 @@
+.flexContainer {
+  composes: sideBySideCenter from "styles/utils.module.scss";
+}
+.text {
+  padding-top: calc(var(--display) * 0.5);
+  padding-bottom: calc(var(--display) * 0.7);
+}
+@keyframes slideIn {
+  0% {
+    margin-left: -20px;
+  }
+  100% {
+    margin-left: 0;
+    opacity: 1;
+  }
+}
+.title {
+  font-size: var(--display);
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+}
+//.text :global {
+//.title {
+//font-size: 4rem;
+//}
+//}
+//.textPastel {
+//composes: text;
+//}
+.subtitle {
+  font-size: var(--small-heading2);
+  font-family: var(--font-notojp);
+  font-weight: 400;
+}
+.image {
+  width: 100%;
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+}

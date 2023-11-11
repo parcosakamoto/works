@@ -1,0 +1,53 @@
+.works {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2rem 2rem;
+  margin: 3rem 0 0 0;
+  @media (max-width: 599px) {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.5rem 1rem;
+    margin: 2rem 0 0 0;
+  }
+  @media (min-width: 600px) and (max-width: 834px) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  article {
+    a {
+      &:hover {
+        opacity: 0.7;
+      }
+
+      display: block;
+      overflow: hidden;
+      opacity: 1;
+      background: #fff;
+      text-decoration: none;
+      -webkit-transition: 0.15s linear opacity;
+      -moz-transition: 0.15s linear opacity;
+      -o-transition: 0.15s linear opacity;
+      -ms-transition: 0.15s linear opacity;
+      transition: 0.15s linear opacity;
+      width: 100%;
+    }
+    h3 {
+      font-size: 0.75rem;
+      font-weight: normal;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0.5rem 0 0 0;
+    }
+  }
+}
+
+.thumb {
+  display: grid;
+  img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    -o-object-fit: cover;
+    object-fit: cover;
+    object-position: center;
+  }
+}
