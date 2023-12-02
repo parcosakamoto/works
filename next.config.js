@@ -12,7 +12,7 @@ module.exports = withExportImages({
     // 画像の形式
     format: ["jpg", "png"],
 
-    // 画像の品質（0 〜 100）
+    // 画像の品質
     quality: 90,
     // 画像の最大サイズ（ピクセル単位）
     maxSize: 600,
