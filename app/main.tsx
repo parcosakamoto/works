@@ -3,8 +3,12 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import styles from "styles/main.module.scss";
 import WorkPosts from "./workposts";
+import WorkPostsWeb from "app/web/workpostsweb";
+import WorkPostsWrite from "app/write/workpostswrite";
+import WorkPostsEtc from "app/etc/workpostsetc";
 import Heading from "./heading";
 import Pagination from "./pagination";
+import { useState } from "react";
 
 const titlejp = "ポートフォリオ";
 const titleen = "portfolio";
@@ -12,28 +16,47 @@ const titleen = "portfolio";
 const navItems = [
   {
     id: 1,
-    href: "/",
+    href: "/works",
     navTitle: "全て",
   },
   {
     id: 2,
-    href: "/kaerimasu/web.html",
+    href: "/web",
     navTitle: "WEB",
   },
   {
     id: 3,
-    href: "/kaerimasu/work.html",
+    href: "/write",
     navTitle: "Writting",
   },
   {
     id: 4,
-    href: "/kaerimasu/movie.html",
+    href: "/etc",
     navTitle: "その他制作物",
   },
 ];
 
-export default function Main() {
+type Props = {
+  etcOn: boolean;
+  webOn: boolean;
+  writeOn: boolean;
+};
+
+export default function Main({ etcOn, webOn, writeOn }: Props) {
   const pathname = usePathname();
+
+  const determineWorkPostsComponent = () => {
+    if (etcOn) {
+      return <WorkPostsEtc />;
+    } else if (webOn) {
+      return <WorkPostsWeb />;
+    } else if (writeOn) {
+      return <WorkPostsWrite />;
+    } else {
+      return <WorkPosts />;
+    }
+  };
+
   return (
     <main id="containers">
       <div className={styles.container}>
@@ -52,7 +75,9 @@ export default function Main() {
             ))}
           </ul>
         </nav>
-        <WorkPosts />
+        {/* ここで条件に基づいたサブコンポーネントを表示 */}
+        {determineWorkPostsComponent()}
+
         <Pagination />
       </div>
     </main>

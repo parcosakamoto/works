@@ -1,5 +1,6 @@
+//"use client";
 import eyecatch from "images/about.jpg";
-import Main from "./main";
+import Main from "app/main";
 
 //meta
 import { siteMeta } from "lib/constants";
@@ -9,11 +10,11 @@ const { siteTitle, siteUrl } = siteMeta;
 import { openGraphMetadata, twitterMetadata } from "lib/baseMetadata";
 
 //works meta
-const pageTitle = "ポートフォリオ";
+const pageTitle = "書きもの";
 const pageDesc =
-  "メイド・イン・坂本パルコ。制作したデザイン・WEBページ・ライティング・WEB詩集をまとめたページ。何卒、よしなに。";
+  "メイド・イン・坂本パルコ。書きもの（ライティング）をまとめたページ。何卒、よしなに。";
 const ogpTitle = `${pageTitle} - ${siteTitle}`;
-const ogpUrl = new URL("/works/", siteUrl).toString();
+const ogpUrl = new URL("/works/web/", siteUrl).toString();
 
 export const metadata = {
   title: `${pageTitle} - ${siteTitle}`,
@@ -39,10 +40,10 @@ export const metadata = {
   },
 };
 
-export default function Home() {
+export default function worksWrite() {
   return (
     <>
-      <Main etcOn={false} webOn={false} writeOn={false} />
+      <Main etcOn={false} webOn={false} writeOn={true} />
     </>
   );
 }

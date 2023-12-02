@@ -4,7 +4,6 @@ const {
   siteTitle,
   siteDesc,
   siteUrl,
-  //siteLang,
   siteLocale,
   siteType,
   siteIcon,
@@ -20,11 +19,12 @@ export const baseMetadata = {
   },
   viewport: {
     width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
+    //initialScale: 1,
+    //maximumScale: 1,
   },
   title: {
-    template: "%s - ${siteTitle}",
+    template: "%s",
+    //template: "%s - ${siteTitle}",
     default: siteTitle,
   },
   description: siteDesc,

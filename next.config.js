@@ -14,9 +14,7 @@ module.exports = withExportImages({
 
     // 画像の品質（0 〜 100）
     quality: 90,
-
     // 画像の最大サイズ（ピクセル単位）
     maxSize: 600,
   },
-  // write your next.js configuration values.
 });

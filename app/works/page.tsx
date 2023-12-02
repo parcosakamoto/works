@@ -1,5 +1,5 @@
 import eyecatch from "images/about.jpg";
-import Main from "./main";
+import Main from "app/main";
 
 //meta
 import { siteMeta } from "lib/constants";

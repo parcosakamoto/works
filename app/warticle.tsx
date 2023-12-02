@@ -33,7 +33,7 @@ export default function Warticle({
               height={500}
             />
           </div>
-          <h3>{title}</h3>
+          <h2>{title}</h2>
         </Link>
       )}
       {!url && (
@@ -53,7 +53,7 @@ export default function Warticle({
               height={500}
             />
           </div>
-          <h3>{title}</h3>
+          <h2>{title}</h2>
         </>
       )}
     </article>
