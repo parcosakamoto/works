@@ -19,7 +19,7 @@ const navLeftList = [
   },
   {
     id: 1,
-    href: "/kaerimasu/profile.html",
+    href: "https://parco-sakamoto-profile.vercel.app/",
     navTitle: "PROFILE",
   },
   {

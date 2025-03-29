@@ -1,0 +1,19 @@
+.container article {
+  margin-block-start: 2rem;
+}
+@media screen and (max-width: 598px) {
+  .container article {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+  }
+}
+@media screen and (max-width: 598px) {
+  .container article .title {
+    padding-inline-start: 1rem;
+  }
+}
+@media screen and (max-width: 598px) {
+  .container article .description {
+    padding-inline-start: 1rem;
+  }
+}/*# sourceMappingURL=workspost.module.css.map */

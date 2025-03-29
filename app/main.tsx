@@ -8,6 +8,7 @@ import WorkPostsWrite from "app/write/workpostswrite";
 import WorkPostsEtc from "app/etc/workpostsetc";
 import Heading from "./heading";
 import Pagination from "./pagination";
+import WorksPost from "./workpost";
 import { useState } from "react";
 
 const titlejp = "ポートフォリオ";
@@ -75,9 +76,10 @@ export default function Main({ etcOn, webOn, writeOn }: Props) {
             ))}
           </ul>
         </nav>
+
         {/* ここで条件に基づいたサブコンポーネントを表示 */}
         {determineWorkPostsComponent()}
-
+        <WorksPost />
         <Pagination />
       </div>
     </main>

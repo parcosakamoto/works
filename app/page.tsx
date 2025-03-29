@@ -26,7 +26,7 @@ export const metadata = {
     images: [
       {
         url: eyecatch.src,
-        with: eyecatch.width,
+        width: eyecatch.width,
         height: eyecatch.height,
       },
     ],

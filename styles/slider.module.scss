@@ -1,0 +1,65 @@
+$breakpoints: (
+  "sm": 599,
+  "md": 600,
+  "lg": 1024,
+  "xl": 1280,
+) !default;
+
+@mixin mediaUp($breakpoint) {
+  @media screen and (min-width: #{map-get($breakpoints, $breakpoint)}px) {
+    @content;
+  }
+}
+
+@mixin mediaDown($breakpoint) {
+  @media screen and (max-width: #{map-get($breakpoints, $breakpoint) - 1}px) {
+    @content;
+  }
+}
+
+@mixin mediaRatio2() {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi) {
+    @content;
+  }
+}
+.slideWrapper {
+  overflow: revert;
+  touch-action: pan-y;
+
+  :global(.swiper-slide) {
+    aspect-ratio: 3 / 2;
+  }
+  :global(.swiper-button-next) {
+    display: none;
+  }
+  :global(.swiper-button-prev) {
+    display: none;
+  }
+
+  @include mediaDown("sm") {
+    overflow-x: auto; /* 横スクロール可能 */
+    touch-action: pan-x; /* 横スクロール許可 */
+    --horizontal--item-width: 240px;
+    display: grid;
+    grid-auto-columns: var(--horizontal--item-width);
+    grid-auto-flow: column;
+    column-gap: 1px;
+    //scroll-snap-type: x mandatory;
+    width: 100%; /* 横スクロールの幅を親要素にあわせる */
+    -webkit-overflow-scrolling: touch; /* iOSスムーススクロール */
+    padding-inline: 1rem;
+    div {
+      width: 240px;
+      scroll-snap-align: start;
+      aspect-ratio: 3 / 2;
+    }
+  }
+}
+
+.slideImage {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}

@@ -1,0 +1,53 @@
+$breakpoints: (
+  "sm": 599,
+  "md": 600,
+  "lg": 1024,
+  "xl": 1280,
+) !default;
+
+@mixin mediaUp($breakpoint) {
+  @media screen and (min-width: #{map-get($breakpoints, $breakpoint)}px) {
+    @content;
+  }
+}
+
+@mixin mediaDown($breakpoint) {
+  @media screen and (max-width: #{map-get($breakpoints, $breakpoint) - 1}px) {
+    @content;
+  }
+}
+
+@mixin mediaRatio2() {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi) {
+    @content;
+  }
+}
+
+.container {
+  article {
+    margin-block-start: 2rem;
+    @include mediaUp("md") {
+      overflow: hidden;
+    }
+    @include mediaDown("sm") {
+      width: 100vw;
+      margin-inline: calc(50% - 50vw);
+    }
+    .title {
+      @include mediaDown("sm") {
+        padding-inline-start: 1rem;
+      }
+    }
+    .description {
+      @include mediaDown("sm") {
+        padding-inline-start: 1rem;
+      }
+    }
+    .tags {
+      @include mediaDown("sm") {
+        padding-inline-start: 1rem;
+      }
+    }
+  }
+}

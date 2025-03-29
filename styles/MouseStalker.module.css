@@ -1,0 +1,43 @@
+@charset "UTF-8";
+.stalker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgba(182, 182, 182, 0.9);
+  mix-blend-mode: color-burn;
+  pointer-events: none;
+  transition: transform 0.1s ease-out, opacity 0.2s ease-out;
+  z-index: 9999;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.swipeText {
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: color-dodge;
+}
+.swipeText path {
+  mix-blend-mode: color-dodge;
+  fill: white;
+}
+
+/* .hoverarea 内でのmouseenterで表示 */
+.visible {
+  opacity: 1;
+  visibility: visible;
+  cursor: grab;
+}
+.visible:active {
+  cursor: grabbing;
+}
+
+/* .hoverarea からmouseleave時に非表示 */
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}/*# sourceMappingURL=MouseStalker.module.css.map */

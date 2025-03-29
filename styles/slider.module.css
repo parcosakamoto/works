@@ -1,0 +1,36 @@
+@charset "UTF-8";
+.slideWrapper {
+  overflow: revert;
+  touch-action: pan-y;
+}
+.slideWrapper :global(.swiper-slide) {
+  aspect-ratio: 3/2;
+}
+@media screen and (max-width: 598px) {
+  .slideWrapper {
+    overflow-x: auto; /* 横スクロール可能 */
+    touch-action: pan-x; /* 横スクロール許可 */
+    --horizontal--item-width: 240px;
+    display: grid;
+    grid-auto-columns: var(--horizontal--item-width);
+    grid-auto-flow: column;
+    -moz-column-gap: 1px;
+         column-gap: 1px;
+    width: 100%; /* 横スクロールの幅を親要素にあわせる */
+    -webkit-overflow-scrolling: touch; /* iOSスムーススクロール */
+    padding-inline: 1rem;
+  }
+  .slideWrapper div {
+    width: 240px;
+    scroll-snap-align: start;
+    aspect-ratio: 3/2;
+  }
+}
+
+.slideImage {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/2;
+  -o-object-fit: cover;
+     object-fit: cover;
+}/*# sourceMappingURL=slider.module.css.map */

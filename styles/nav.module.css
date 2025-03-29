@@ -1,0 +1,66 @@
+.gNav {
+  position: fixed;
+  bottom: 31px;
+  left: 26px;
+  font-family: var(--font-economica);
+  font-size: 108%;
+  letter-spacing: 0.1em;
+}
+@media screen and (max-width: 834px) {
+  .gNav {
+    position: initial;
+  }
+}
+.gNav li {
+  width: 100%;
+}
+@media screen and (max-width: 834px) {
+  .gNav li {
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    transform: translateY(20px);
+    padding-left: 1rem;
+  }
+  .gNav li:nth-child(1) {
+    padding: 0 0 1.5rem 0;
+    transform: initial;
+  }
+}
+@media screen and (min-width: 835px) {
+  .gNav li:nth-child(1) {
+    display: none;
+  }
+}
+.gNav li a {
+  width: 100%;
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.gNav li a:hover {
+  color: #40aaef;
+  transition: all 0.4s;
+}
+
+:global(.header-nav-open) .gNav li {
+  opacity: 1;
+  transform: translateY(0);
+}
+:global(.header-nav-open) .gNav li:nth-child(1) {
+  transition-delay: 0.1s;
+}
+:global(.header-nav-open) .gNav li:nth-child(2) {
+  transition-delay: 0.3s;
+}
+:global(.header-nav-open) .gNav li:nth-child(3) {
+  transition-delay: 0.35s;
+}
+:global(.header-nav-open) .gNav li:nth-child(4) {
+  transition-delay: 0.4s;
+}
+:global(.header-nav-open) .gNav li:nth-child(5) {
+  transition-delay: 0.45s;
+}
+:global(.header-nav-open) .gNav li:nth-child(6) {
+  transition-delay: 0.5s;
+}/*# sourceMappingURL=nav.module.css.map */

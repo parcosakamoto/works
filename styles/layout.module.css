@@ -1,0 +1,28 @@
+.text {
+  padding: 1rem;
+  border: solid 2px currentColor;
+  color: darkblue;
+  animation: slideIn 3s;
+}
+
+@keyframes slideIn {
+  0% {
+    margin-left: -20px;
+  }
+  100% {
+    margin-left: 0;
+    opacity: 1;
+  }
+}
+.text :global .title {
+  font-size: 4rem;
+}
+
+.textPastel {
+  composes: text;
+  color: lightpink;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+}/*# sourceMappingURL=layout.module.css.map */

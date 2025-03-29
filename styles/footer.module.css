@@ -1,0 +1,61 @@
+@media (max-width: 599px) {
+  .footer {
+    margin: 3rem 0 0 0;
+    padding: 0.5rem clamp(1rem, 0.241rem + 3.38vw, 2rem);
+    display: grid;
+    grid-template-columns: 40px 1fr;
+  }
+}
+
+.sns {
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  right: 8px;
+  margin: 0;
+}
+@media (max-width: 599px) {
+  .sns {
+    position: static;
+  }
+}
+.sns a {
+  display: block;
+  padding-bottom: 8px;
+  transition: 0.2s linear;
+}
+.sns a:hover {
+  opacity: 0.5;
+}
+@media (max-width: 599px) {
+  .sns a {
+    width: 16px;
+    padding: 0;
+  }
+  .sns a img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.copy {
+  font-size: 8px;
+  position: fixed;
+  left: 24px;
+  bottom: 10px;
+  z-index: 100;
+}
+@media (max-width: 599px) {
+  .copy {
+    position: static;
+    place-self: end;
+    align-self: center;
+  }
+}
+
+:global(.header-nav-open) .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+}/*# sourceMappingURL=footer.module.css.map */
