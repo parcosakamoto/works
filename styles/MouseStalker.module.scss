@@ -26,13 +26,10 @@
 }
 
 /* .hoverarea 内でのmouseenterで表示 */
+
 .visible {
   opacity: 1;
   visibility: visible;
-  cursor: grab;
-  &:active {
-    cursor: grabbing;
-  }
 }
 
 /* .hoverarea からmouseleave時に非表示 */

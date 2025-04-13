@@ -27,6 +27,15 @@ $breakpoints: (
 .container {
   article {
     margin-block-start: 2rem;
+    :global {
+      .hoverarea {
+        cursor: grab;
+      }
+
+      .hoverarea:active {
+        cursor: grabbing;
+      }
+    }
     @include mediaUp("md") {
       overflow: hidden;
     }

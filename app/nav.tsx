@@ -49,9 +49,13 @@ export default function Nav() {
       <ul className={`${styles.gNav} ${economica.variable}`}>
         {navLeftList.map(({ href, navTitle, id }) => (
           <li key={id}>
-            <Link href={href} legacyBehavior>
-              {navTitle}
-            </Link>
+            {href.startsWith("http") ? (
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                {navTitle}
+              </a>
+            ) : (
+              <Link href={href}>{navTitle}</Link>
+            )}
           </li>
         ))}
       </ul>
