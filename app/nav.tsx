@@ -19,12 +19,12 @@ const navLeftList = [
   },
   {
     id: 1,
-    href: "https://parco-sakamoto-profile.vercel.app/",
+    href: "https://parco-sakamoto-profile.vercel.app",
     navTitle: "PROFILE",
   },
   {
     id: 2,
-    href: "/works/index.html",
+    href: "https://parco-sakamoto-works.vercel.app/",
     navTitle: "PORTFOLIO",
   },
   {
@@ -49,7 +49,9 @@ export default function Nav() {
       <ul className={`${styles.gNav} ${economica.variable}`}>
         {navLeftList.map(({ href, navTitle, id }) => (
           <li key={id}>
-            <Link href={href}>{navTitle}</Link>
+            <Link href={href} legacyBehavior>
+              {navTitle}
+            </Link>
           </li>
         ))}
       </ul>

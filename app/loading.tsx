@@ -1,5 +1,10 @@
-import styles from "styles/loading.module.scss";
+import styles from "styles/ArticleSkeleton.module.scss";
 
 export default function Loading() {
-  return <div className={styles.loading}>Loading...</div>;
+  return (
+    <article className={styles.skeletonArticle}>
+      <div className={styles.skeletonThumb}></div>
+      <div className={styles.skeletonTitle}></div>
+    </article>
+  );
 }

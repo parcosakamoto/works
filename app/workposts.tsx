@@ -1,8 +1,10 @@
+import { useState, useEffect } from "react"; // useState と useEffect をインポート
 import styles from "styles/works.module.scss";
 import Warticle from "./warticle";
-import Image from "next/image";
-//import imageLoader from "lib/imageLoader";
-export const worksList = [
+import ArticleSkeleton from "./loading"; // スケルトンコンポーネントをインポート
+// import Image from "next/image"; // WorkPosts では直接使われていないので削除してもOK
+// import imageLoader from "lib/imageLoader";
+const initialWorksList = [
   {
     id: 0,
     title: "くもフリマ春 ポスター SNS宣材",
@@ -208,19 +210,58 @@ export const worksList = [
     link: "",
   },
 ];
+export default function WorkPosts(): JSX.Element {
+  // useState で作品リストとローディング状態を管理
+  const [works, setWorks] = useState<
+    { id: number; title: string; url: string; eyecatch: string; link: string }[]
+  >([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-export default function WorkPosts() {
+  useEffect(() => {
+    // データ読み込みをシミュレート
+    const timer = setTimeout(() => {
+      setWorks(initialWorksList); // データを state にセット
+      setIsLoading(false); // ローディング完了
+    }, 1500); // 1.5秒後に読み込み完了とする (時間は調整可能)
+
+    // クリーンアップ関数: コンポーネントがアンマウントされる時にタイマーをクリア
+    return () => clearTimeout(timer);
+  }, []); // 空の依存配列で、マウント時に一度だけ実行
+
+  // 注意: 元の worksList では id が重複していました。
+  // React のリストで `key` に使う値は一意である必要があります。
+  // ここでは仮に worksList の id を修正しましたが、
+  // もし id が一意でない場合は、map の第二引数 index を key に使うことも検討できます。
+  // 例: <Warticle key={index} ... /> ただし、リストの順序が変わらない場合に限ります。
+
   return (
     <section className={styles.works}>
-      {worksList.map(({ url, title, eyecatch, id, link }) => (
-        <Warticle
-          title={title}
-          url={url}
-          eyecatch={eyecatch}
-          key={id}
-          link={link}
-        />
-      ))}
+      {isLoading ? (
+        // ローディング中はスケルトンを表示
+        // 表示するスケルトンの数は、デザインに合わせて調整してください
+        <>
+          <ArticleSkeleton />
+          <ArticleSkeleton />
+          <ArticleSkeleton />
+          <ArticleSkeleton />
+          <ArticleSkeleton />
+          <ArticleSkeleton />
+          <ArticleSkeleton />
+          <ArticleSkeleton />
+          {/* 必要に応じてスケルトンの数を増減 */}
+        </>
+      ) : (
+        // ローディング完了後は実際の作品リストを表示
+        works.map(({ url, title, eyecatch, id, link }) => (
+          <Warticle
+            title={title}
+            url={url}
+            eyecatch={eyecatch}
+            key={id} // ここで一意な ID を使用します
+            link={link}
+          />
+        ))
+      )}
     </section>
   );
 }

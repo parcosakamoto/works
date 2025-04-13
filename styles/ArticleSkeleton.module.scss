@@ -1,0 +1,38 @@
+/* components/ArticleSkeleton.module.css */
+.skeletonArticle {
+  /* 必要に応じて article 全体のスタイルを追加 */
+  border: 1px solid #e0e0e0; /* 例: 枠線 */
+  padding: 15px; /* 例: パディング */
+  margin-bottom: 20px; /* 例: 下マージン */
+  background-color: #fff;
+}
+
+.skeletonThumb {
+  width: 100%;
+  /* 高さは実際の画像の比率に合わせて調整 */
+  /* 例: aspect-ratio を使うか、固定の高さを指定 */
+  padding-top: 56.25%; /* 16:9 の比率の場合 */
+  background-color: #e0e0e0;
+  margin-bottom: 10px;
+  border-radius: 4px; /* 角丸 */
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.skeletonTitle {
+  width: 80%; /* タイトルの幅 */
+  height: 20px; /* タイトルの高さ */
+  background-color: #e0e0e0;
+  border-radius: 4px; /* 角丸 */
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* パルスアニメーション */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
