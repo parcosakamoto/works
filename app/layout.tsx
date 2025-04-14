@@ -5,7 +5,7 @@ import {
 } from "lib/baseMetadata";
 import "./globals.css";
 import { Suspense } from "react";
-import Loading from "./loading";
+//import Loading from "./loading";
 import Header from "./header";
 import Nav from "./nav";
 import Footer from "./footer";
@@ -23,7 +23,7 @@ export default function RootLayout({
             <Header />
             <Nav />
           </div>
-          <Suspense fallback={<Loading />}>{children}</Suspense>
+          <Suspense>{children}</Suspense>
         </div>
         <Footer />
       </body>
