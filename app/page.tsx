@@ -42,7 +42,7 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-      <Main etcOn={false} webOn={false} writeOn={false} />
+      <Main />
     </>
   );
 }
