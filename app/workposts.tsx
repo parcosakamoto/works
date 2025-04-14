@@ -210,34 +210,27 @@ const initialWorksList = [
     link: "",
   },
 ];
-export default function WorkPosts(): JSX.Element {
-  // useState で作品リストとローディング状態を管理
+export default function WorkPosts() {
   const [works, setWorks] = useState<
     { id: number; title: string; url: string; eyecatch: string; link: string }[]
   >([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // データ読み込みをシミュレート
+    // データ読み込みをシミュレート（非常に短い時間）
     const timer = setTimeout(() => {
-      setWorks(initialWorksList); // データを state にセット
-      setIsLoading(false); // ローディング完了
-    }, 1500); // 1.5秒後に読み込み完了とする (時間は調整可能)
+      setWorks(initialWorksList);
+      setIsLoading(false);
+    }, 200); // ←★ 待機時間を短く設定 (例: 200ミリ秒 = 0.2秒)
+    // この時間は 100 から 300 くらいで調整してみてください
 
-    // クリーンアップ関数: コンポーネントがアンマウントされる時にタイマーをクリア
+    // クリーンアップ関数
     return () => clearTimeout(timer);
-  }, []); // 空の依存配列で、マウント時に一度だけ実行
-
-  // 注意: 元の worksList では id が重複していました。
-  // React のリストで `key` に使う値は一意である必要があります。
-  // ここでは仮に worksList の id を修正しましたが、
-  // もし id が一意でない場合は、map の第二引数 index を key に使うことも検討できます。
-  // 例: <Warticle key={index} ... /> ただし、リストの順序が変わらない場合に限ります。
+  }, []);
 
   return (
     <section className={styles.works}>
       {isLoading ? (
-        // ローディング中はスケルトンを表示
         <>
           <ArticleSkeleton />
           <ArticleSkeleton />
@@ -247,10 +240,10 @@ export default function WorkPosts(): JSX.Element {
           <ArticleSkeleton />
           <ArticleSkeleton />
           <ArticleSkeleton />
+          {/* ... */}
         </>
       ) : (
-        // ローディング完了後は実際の作品リストを表示
-        works.map(({ url, title, eyecatch, id, link }, index) => (
+        works.map(({ url, title, eyecatch, id, link }) => (
           <Warticle
             title={title}
             url={url}

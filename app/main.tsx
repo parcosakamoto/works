@@ -78,7 +78,7 @@ export default function Main({ etcOn, webOn, writeOn }: Props) {
         </nav>
 
         {/* ここで条件に基づいたサブコンポーネントを表示 */}
-        {determineWorkPostsComponent()}
+        {/*determineWorkPostsComponent()*/}
         <WorksPost />
         <Pagination />
       </div>
