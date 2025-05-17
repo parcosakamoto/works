@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <nav className={styles.sns}>
-        <Link href="https://twitter.com/parco_vita" target="_blank">
+        <Link href="https://twitter.com/" target="_blank">
           <Image
             src={sns}
             alt="坂本パルコのx"

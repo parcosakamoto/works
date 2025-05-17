@@ -44,19 +44,49 @@ $breakpoints: (
       margin-inline: calc(50% - 50vw);
     }
     .title {
+      font-weight: 400;
+      letter-spacing: 0.022em;
+      margin-block-start: 0.875rem;
+      font-size: 1.425rem;
       @include mediaDown("sm") {
         padding-inline-start: 1rem;
       }
     }
     .description {
+      display: inline;
+      margin-block-start: 0.75rem;
+      font-size: 1rem;
+      text-box: trim-both cap alphabetic;
+      color: var(--gray-75);
+      background-image: linear-gradient(var(--gray-75), var(--black));
+      background-repeat: no-repeat;
+      background-position: bottom right; /* 下線の初期位置 */
+      background-size: 0 1px; /* 下線のサイズ（横幅、高さ） */
+      transition: background-size 0.3s;
+      &:hover {
+        background-position: bottom left; /* 下線のホバー時位置 */
+        background-size: 100% 1px; /* 下線の横幅を100%にする */
+      }
       @include mediaDown("sm") {
         padding-inline-start: 1rem;
       }
     }
     .tags {
+      display: flex;
+      gap: 1em;
+      padding-inline-start: 0.125rem;
+      color: var(--gray-60);
+      margin-block-start: 1.25rem;
+      text-box: trim-both cap alphabetic;
+
       @include mediaDown("sm") {
         padding-inline-start: 1rem;
       }
+      span {
+      }
+    }
+    a {
+      text-decoration: none;
     }
   }
 }

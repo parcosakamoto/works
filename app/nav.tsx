@@ -29,17 +29,12 @@ const navLeftList = [
   },
   {
     id: 3,
-    href: "/niigataparco.html",
-    navTitle: "NIIGATA PARCO",
-  },
-  {
-    id: 4,
-    href: "/kaerimasu/diary.html",
+    href: "https://parco.chobi.net/kaerimasu/diary.html",
     navTitle: "日々雑記",
   },
   {
     id: 5,
-    href: "/kaerimasu/contact.html",
+    href: "https://parco.chobi.net/kaerimasu/contact.html",
     navTitle: "CONTACT",
   },
 ];
@@ -50,7 +45,7 @@ export default function Nav() {
         {navLeftList.map(({ href, navTitle, id }) => (
           <li key={id}>
             {href.startsWith("http") ? (
-              <a href={href} target="_blank" rel="noopener noreferrer">
+              <a href={href} target="_self" rel="noopener noreferrer">
                 {navTitle}
               </a>
             ) : (

@@ -3,13 +3,22 @@ import BasicSlider from "./slider";
 import ArticleSkeleton from "./loading"; // スケルトンコンポーネントをインポート
 import styles from "styles/workspost.module.scss";
 import MouseStalker from "./components/MouseStalker"; // パスを確認してください
+import { Zen_Kaku_Gothic_New } from "next/font/google";
+
+export const zenKakuGothicNew = Zen_Kaku_Gothic_New({
+  weight: ["300", "400"],
+  subsets: ["latin"],
+  display: "swap",
+});
 
 interface WorkItem {
   images: string[];
   link: string;
   title: string;
   description: string;
-  tags: string[]; // タグは小文字で統一すると扱いやすい (例: 'web', 'write', 'etc')
+  tags: string[];
+  tag: string[];
+  // タグは小文字で統一すると扱いやすい (例: 'web', 'write', 'etc')
 }
 
 // 注意: 現在の worksItems には 'web' タグしかありません。
@@ -24,8 +33,9 @@ const worksItems: WorkItem[] = [
     ],
     link: "#",
     title: "苔Latte リーフレット",
-    description: "デザインを担当した苔Latteのリーフレットです。",
-    tags: ["design", "print"], // 'write' や 'etc' タグを持つアイテムを必要に応じて追加
+    description: "ちいさな森の育て方<br>なんか、もっと知りたいかも。",
+    tags: ["#デザイン", "#チラシ・リーフレット"],
+    tag: ["write", "etc"],
   },
   {
     images: [
@@ -37,6 +47,7 @@ const worksItems: WorkItem[] = [
     title: "くもフリマ SNS宣材",
     description: "くもフリマのSNS宣伝用画像をデザインしました。",
     tags: ["design", "web"], // 'web' タグ
+    tag: ["web", "write"],
   },
   // 例: Write カテゴリ用のアイテム
   // {
@@ -74,7 +85,7 @@ export default function WorkPost({ activeCategory }: WorkPostProps) {
     let filteredWorks = worksItems;
     if (activeCategory !== "all") {
       filteredWorks = worksItems.filter(
-        (item) => item.tags.includes(activeCategory) // activeCategory と同じタグを持つものを抽出
+        (item) => item.tag.includes(activeCategory) // activeCategory と同じタグを持つものを抽出
       );
     }
     // else の場合 ('all') はフィルタリングせず全件表示
@@ -114,14 +125,20 @@ export default function WorkPost({ activeCategory }: WorkPostProps) {
       ) : // works state (フィルタリング済み) を map する
       works.length > 0 ? ( // フィルタ結果が0件の場合の表示も考慮
         works.map((item: WorkItem, index: number) => (
-          <article key={index} className={styles.article}>
+          <article
+            key={index}
+            className={`${styles.article} ${zenKakuGothicNew.className}`}
+          >
             <BasicSlider images={item.images} />
             <MouseStalker />
             <div className={styles.content}>
               {item.link ? (
                 <a href={item.link} target="_blank" rel="noopener noreferrer">
                   <h2 className={styles.title}>{item.title}</h2>
-                  <p className={styles.description}>{item.description}</p>
+                  <p
+                    className={styles.description}
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                  />
                   <p className={styles.tags}>
                     {item.tags.map((tag: string, tagIndex: number) => (
                       <span key={tagIndex} className={styles.tag}>
