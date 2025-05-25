@@ -36,6 +36,14 @@ $breakpoints: (
         cursor: grabbing;
       }
     }
+    a {
+      &:hover {
+        .description {
+          background-position: bottom left; /* 下線のホバー時位置 */
+          background-size: 100% 1px; /* 下線の横幅を100%にする */
+        }
+      }
+    }
     @include mediaUp("md") {
       overflow: hidden;
     }
@@ -63,10 +71,7 @@ $breakpoints: (
       background-position: bottom right; /* 下線の初期位置 */
       background-size: 0 1px; /* 下線のサイズ（横幅、高さ） */
       transition: background-size 0.3s;
-      &:hover {
-        background-position: bottom left; /* 下線のホバー時位置 */
-        background-size: 100% 1px; /* 下線の横幅を100%にする */
-      }
+
       @include mediaDown("sm") {
         padding-inline-start: 1rem;
       }

@@ -31,7 +31,7 @@ const worksItems: WorkItem[] = [
       "/works/koke-latte_03.png",
       "/works/koke-latte_04.png",
     ],
-    link: "#",
+    link: "https://www.instagram.com/koke_latte/",
     title: "苔Latte リーフレット",
     description: "ちいさな森の育て方<br>なんか、もっと知りたいかも。",
     tags: ["#デザイン", "#チラシ・リーフレット"],
@@ -39,14 +39,17 @@ const worksItems: WorkItem[] = [
   },
   {
     images: [
-      "/works/kumofre_01.png",
-      "/works/kumofre_02.png",
-      "/works/kumofre_03.png",
+      "/works/kumof_logo.png",
+      "/works/kumof_01.jpg",
+      "/works/kumof_sns.png",
+      "/works/kumof_up.png",
+      "/works/kumof_02.png",
+      "/works/kumof_04.png",
     ],
-    link: "",
-    title: "くもフリマ SNS宣材",
-    description: "くもフリマのSNS宣伝用画像をデザインしました。",
-    tags: ["design", "web"], // 'web' タグ
+    link: "https://www.instagram.com/p/DG2X9UNS3yG/",
+    title: "くもフリマ",
+    description: "お寺でフリマ<br>休日にお寺に行くのもいいじゃん",
+    tags: ["#デザイン", "#チラシ・リーフレット", "#SNS宣材"], // 'web' タグ
     tag: ["web", "write"],
   },
   // 例: Write カテゴリ用のアイテム
@@ -150,7 +153,10 @@ export default function WorkPost({ activeCategory }: WorkPostProps) {
               ) : (
                 <>
                   <h2 className={styles.title}>{item.title}</h2>
-                  <p className={styles.description}>{item.description}</p>
+                  <p
+                    className={styles.description}
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                  />
                   <p className={styles.tags}>
                     {item.tags.map((tag, tagIndex) => (
                       <span key={tagIndex} className={styles.tag}>
