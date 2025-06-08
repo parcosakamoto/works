@@ -46,6 +46,9 @@ $breakpoints: (
     }
     @include mediaUp("md") {
       overflow: hidden;
+      &:not(:first-child) {
+        margin-block-start: 4rem;
+      }
     }
     @include mediaDown("sm") {
       width: 100vw;
@@ -73,6 +76,7 @@ $breakpoints: (
       transition: background-size 0.3s;
 
       @include mediaDown("sm") {
+        display: block;
         padding-inline-start: 1rem;
       }
     }

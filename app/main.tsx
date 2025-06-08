@@ -22,19 +22,19 @@ const navItems = [
   {
     id: 2,
     // href: "/web/",
-    navTitle: "WEB",
+    navTitle: "web",
     categoryKey: "web",
   },
   {
     id: 3,
     // href: "/write/",
-    navTitle: "Writting",
+    navTitle: "writting",
     categoryKey: "write",
   },
   {
     id: 4,
     // href: "/etc/",
-    navTitle: "その他制作物",
+    navTitle: "et cetera",
     categoryKey: "etc",
   },
 ];

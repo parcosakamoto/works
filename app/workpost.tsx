@@ -49,7 +49,21 @@ const worksItems: WorkItem[] = [
     link: "https://www.instagram.com/p/DG2X9UNS3yG/",
     title: "くもフリマ",
     description: "お寺でフリマ<br>休日にお寺に行くのもいいじゃん",
-    tags: ["#デザイン", "#チラシ・リーフレット", "#SNS宣材"], // 'web' タグ
+    tags: ["#デザイン", "#ロゴ", "#チラシ・リーフレット", "#SNS宣材"], // 'web' タグ
+    tag: ["web", "write"],
+  },
+  {
+    images: [
+      "/works/studioespoir_01.jpg",
+      "/works/studioespoir_02.png",
+      "/works/studioespoir_03.jpg",
+      "/works/studioespoir_04.png",
+      "/works/studioespoir_05.png",
+    ],
+    link: "https://studio-espoir.com/",
+    title: "スタジオエスポワール",
+    description: "FIT TO ME<br>目的に合わせたトレーニングサポート",
+    tags: ["#デザイン", "#ロゴ", "#CMS構築", "#写真撮影"], // 'web' タグ
     tag: ["web", "write"],
   },
   // 例: Write カテゴリ用のアイテム
