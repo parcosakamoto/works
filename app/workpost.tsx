@@ -34,7 +34,7 @@ const worksItems: WorkItem[] = [
     link: "https://www.instagram.com/koke_latte/",
     title: "苔Latte リーフレット",
     description: "ちいさな森の育て方<br>なんか、もっと知りたいかも。",
-    tags: ["#デザイン", "#チラシ・リーフレット"],
+    tags: ["#デザイン", "#チラシ・リーフレット", "#キャッチコピー"],
     tag: ["write", "etc"],
   },
   {
@@ -49,7 +49,13 @@ const worksItems: WorkItem[] = [
     link: "https://www.instagram.com/p/DG2X9UNS3yG/",
     title: "くもフリマ",
     description: "お寺でフリマ<br>休日にお寺に行くのもいいじゃん",
-    tags: ["#デザイン", "#ロゴ", "#チラシ・リーフレット", "#SNS宣材"], // 'web' タグ
+    tags: [
+      "#デザイン",
+      "#ロゴ",
+      "#キャッチコピー",
+      "#チラシ・リーフレット",
+      "#SNS宣材",
+    ], // 'web' タグ
     tag: ["web", "write"],
   },
   {
@@ -63,7 +69,7 @@ const worksItems: WorkItem[] = [
     link: "https://studio-espoir.com/",
     title: "スタジオエスポワール",
     description: "FIT TO ME<br>目的に合わせたトレーニングサポート",
-    tags: ["#デザイン", "#ロゴ", "#CMS構築", "#写真撮影"], // 'web' タグ
+    tags: ["#デザイン", "#ロゴ", "#キャッチコピー", "#写真撮影", "#CMS構築"], // 'web' タグ
     tag: ["web", "write"],
   },
   // 例: Write カテゴリ用のアイテム
