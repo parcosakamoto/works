@@ -42,6 +42,7 @@ const worksItems: WorkItem[] = [
       "/works/kumof_logo.png",
       "/works/kumof_01.jpg",
       "/works/kumof_sns.png",
+      "/works/kumof_pic.jpg",
       "/works/kumof_up.png",
       "/works/kumof_02.png",
       "/works/kumof_04.png",
@@ -71,6 +72,57 @@ const worksItems: WorkItem[] = [
     description: "FIT TO ME<br>目的に合わせたトレーニングサポート",
     tags: ["#デザイン", "#ロゴ", "#キャッチコピー", "#写真撮影", "#CMS構築"], // 'web' タグ
     tag: ["web", "write"],
+  },
+  {
+    images: [
+      "/works/snackumo_01.png",
+      "/works/snackumo_02.png",
+      "/works/snackumo_03.png",
+    ],
+    link: "",
+    title: "スナックくも",
+    description: "2023年 ネオン本堂を舞台に<br>一夜だけのスナックがオープン",
+    tags: [
+      "#デザイン",
+      "#ロゴ",
+      "#キャッチコピー",
+      "#チラシ・リーフレット",
+      "#SNS宣材",
+    ], // 'web' タグ
+    tag: ["web", "write"],
+  },
+  {
+    images: [
+      "/works/kumomaru_01.jpg",
+      "/works/kumomaru.png",
+      "/works/kumomaru_flag.jpg",
+      "/works/kumomaru_pic.jpg",
+      "/works/kumomaru_post.png",
+    ],
+    link: "",
+    title: "くもマルシェ",
+    description: "それはつまり、<br>お寺がつなぐ、人とマルシェなのだ",
+    tags: [
+      "#デザイン",
+      "#ロゴ",
+      "#キャッチコピー",
+      "#チラシ・リーフレット",
+      "#SNS宣材",
+    ], // 'web' タグ
+    tag: ["web", "write"],
+  },
+  {
+    images: [
+      "/works/seki_01.jpg",
+      "/works/seki_02.jpg",
+      "/works/seki_03.jpg",
+      "/works/seki_04.jpg",
+    ],
+    link: "",
+    title: "関龍馬 選挙商材",
+    description: "小千谷現役世代<br>これからの小千谷を創る4つの提案",
+    tags: ["#デザイン", "#ライティング", "#チラシ・リーフレット", ,], // 'web' タグ
+    tag: ["write", "etc"],
   },
   // 例: Write カテゴリ用のアイテム
   // {

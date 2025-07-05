@@ -8,11 +8,11 @@ const config = {
   // Sharp の詳細オプション (任意: 品質や速度を調整)
   sharpOptions: {
     webp: {
-      quality: 80, // WebP 品質 (0-100)
+      quality: 90, // WebP 品質 (0-100)
       effort: 4, // 速度/圧縮率バランス (0:速い - 6:遅い/高圧縮)
     },
     avif: {
-      quality: 80, // AVIF 品質 (0-100)
+      quality: 90, // AVIF 品質 (0-100)
       effort: 4, // 速度/圧縮率バランス (0:速い - 9:遅い/高圧縮)
     },
   },

@@ -27,6 +27,11 @@ $breakpoints: (
 .container {
   article {
     margin-block-start: 2rem;
+    &:not(:first-child) {
+      @include mediaDown(sm) {
+        margin-block-start: 3rem;
+      }
+    }
     :global {
       .hoverarea {
         cursor: grab;
@@ -47,7 +52,7 @@ $breakpoints: (
     @include mediaUp("md") {
       overflow: hidden;
       &:not(:first-child) {
-        margin-block-start: 4rem;
+        margin-block-start: 5rem;
       }
     }
     @include mediaDown("sm") {
@@ -89,9 +94,17 @@ $breakpoints: (
       text-box: trim-both cap alphabetic;
 
       @include mediaDown("sm") {
+        display: revert;
         padding-inline-start: 1rem;
+        line-height: 1.5;
+        opacity: 0.8;
+        font-size: 0.75rem;
       }
       span {
+        display: inline;
+        &:not(:last-child) {
+          margin-inline-end: 0.5rem;
+        }
       }
     }
     a {
