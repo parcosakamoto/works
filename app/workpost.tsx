@@ -124,6 +124,23 @@ const worksItems: WorkItem[] = [
     tags: ["#デザイン", "#ライティング", "#チラシ・リーフレット"], // 'web' タグ
     tag: ["write", "etc"],
   },
+  {
+    images: [
+      "/works/samikan.png",
+      "/works/samikan_01.jpg",
+      "/works/samikan_02.jpg",
+      "/works/samikan_03.jpg",
+      "/works/samikan_04.jpg",
+      "/works/samikan_06.png",
+      "/works/samikan_05.png",
+    ],
+    link: "",
+    title: "ウェブマガジン 春秋蜜柑",
+    description:
+      "ふたりの人気Poestが贈る<br>ちょっと嬉しい<br>日めくり詩エッセイ",
+    tags: ["#デザイン", "#ライティング", "#チラシ・リーフレット"], // 'web' タグ
+    tag: ["write", "etc"],
+  },
   // 例: Write カテゴリ用のアイテム
   // {
   //   images: ["/works/article_01.png"],
