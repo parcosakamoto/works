@@ -118,7 +118,7 @@ const worksItems: WorkItem[] = [
       "/works/seki_03.jpg",
       "/works/seki_04.jpg",
     ],
-    link: "",
+    link: "https://samikan.site",
     title: "関龍馬 選挙商材",
     description: "小千谷現役世代<br>これからの小千谷を創る4つの提案",
     tags: ["#デザイン", "#ライティング", "#チラシ・リーフレット"], // 'web' タグ
