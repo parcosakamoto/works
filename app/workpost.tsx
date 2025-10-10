@@ -186,6 +186,7 @@ export default function WorkPost({ activeCategory }: WorkPostProps) {
   const [works, setWorks] = useState<WorkItem[]>([]);
   const [visibleCount, setVisibleCount] = useState(5); // ← 初期表示件数
   const [isLoading, setIsLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const loaderRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -209,32 +210,48 @@ export default function WorkPost({ activeCategory }: WorkPostProps) {
       setIsLoading(false);
     }
   }, [activeCategory]);
+  // SP判定用 useEffect を追加
+  useEffect(() => {
+    const checkMobile = () => {
+      // 画面幅が 768px 以下の場合をモバイルと判断 (例)
+      setIsMobile(window.innerWidth <= 768);
+    };
 
+    if (typeof window !== "undefined") {
+      checkMobile();
+      window.addEventListener("resize", checkMobile);
+      return () => window.removeEventListener("resize", checkMobile);
+    }
+  }, []);
   // === IntersectionObserverで無限スクロール実装 ===
   useEffect(() => {
+    // 初期ロード中の場合は処理をスキップ
+    if (isLoading) {
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
         if (entry.isIntersecting) {
+          // 次のアイテムを読み込む
           setVisibleCount((prev) => {
             const nextCount = prev + 5;
             return nextCount <= works.length ? nextCount : works.length;
           });
         }
       },
-      {
-        root: null, // windowを監視
-        rootMargin: "100px", // 100px手前で発火
-        threshold: 0.1, // 10%見えたら発火
-      }
+      { threshold: 0.5 }
     );
 
-    if (loaderRef.current) observer.observe(loaderRef.current);
-    return () => {
-      if (loaderRef.current) observer.unobserve(loaderRef.current);
-    };
-  }, [works]);
+    const currentLoader = loaderRef.current;
+    // loaderTriggerが存在する場合のみ監視を開始
+    if (currentLoader) observer.observe(currentLoader);
 
+    return () => {
+      if (currentLoader) observer.unobserve(currentLoader);
+    };
+  }, [works, isLoading]); // ← isLoading を依存配列に追加
   const visibleWorks = works.slice(0, visibleCount);
 
   return (
@@ -252,7 +269,8 @@ export default function WorkPost({ activeCategory }: WorkPostProps) {
               className={`${styles.article} ${zenKakuGothicNew.className}`}
             >
               <BasicSlider images={item.images} />
-              <MouseStalker />
+              {/* マウスストーカーをPCでのみ表示 */}
+              {!isMobile && <MouseStalker />} {/* ← 判定を追加 */}
               <div className={styles.content}>
                 {item.link ? (
                   <a href={item.link} target="_blank" rel="noopener noreferrer">
