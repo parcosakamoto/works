@@ -222,7 +222,7 @@ export default function WorkPost({ activeCategory }: WorkPostProps) {
           });
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.1 }
     );
 
     if (loaderRef.current) observer.observe(loaderRef.current);
