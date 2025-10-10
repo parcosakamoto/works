@@ -85,7 +85,6 @@ export default function Main() {
 
         {/* WorkPost には状態変数を渡す */}
         <WorkPost activeCategory={selectedCategory} />
-        <Pagination />
       </div>
     </main>
   );

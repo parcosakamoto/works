@@ -222,7 +222,11 @@ export default function WorkPost({ activeCategory }: WorkPostProps) {
           });
         }
       },
-      { threshold: 0.1 }
+      {
+        root: null, // windowを監視
+        rootMargin: "100px", // 100px手前で発火
+        threshold: 0.1, // 10%見えたら発火
+      }
     );
 
     if (loaderRef.current) observer.observe(loaderRef.current);

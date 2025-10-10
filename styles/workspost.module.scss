@@ -66,6 +66,7 @@ $breakpoints: (
       font-size: 1.425rem;
       @include mediaDown("sm") {
         padding-inline-start: 1rem;
+        font-size: 1.325rem;
       }
     }
     .description {
@@ -110,5 +111,11 @@ $breakpoints: (
     a {
       text-decoration: none;
     }
+  }
+}
+.loaderTrigger {
+  @include mediaDown("sm") {
+    width: 100%;
+    height: 100px;
   }
 }
