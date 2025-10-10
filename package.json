@@ -25,5 +25,10 @@
   },
   "devDependencies": {
     "next-export-optimize-images": "^4.4.0"
+  },
+  "overrides": {
+    "@react-three/fiber": {
+      "next": "15.3.0"
+    }
   }
 }

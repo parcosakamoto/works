@@ -1,0 +1,102 @@
+$breakpoints: (
+  "sm": 600,
+  "md": 601,
+  "lg": 1024,
+  "xl": 1280,
+) !default;
+
+@mixin mediaUp($breakpoint) {
+  @media screen and (min-width: #{map-get($breakpoints, $breakpoint)}px) {
+    @content;
+  }
+}
+
+@mixin mediaDown($breakpoint) {
+  @media screen and (max-width: #{map-get($breakpoints, $breakpoint) - 1}px) {
+    @content;
+  }
+}
+
+@mixin mediaRatio2() {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi) {
+    @content;
+  }
+}
+.canvas {
+  margin-block-start: 5rem;
+  width: 100%;
+  height: 70dvh;
+  @include mediaDown(sm) {
+    width: 100vw;
+    margin-inline-start: -1rem;
+  }
+}
+
+.skeletonThumb {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  width: 100%;
+  aspect-ratio: 1305 / 271;
+  margin-bottom: 10px;
+  border-radius: 4px; /* 角丸 */
+  overflow: hidden;
+  @include mediaDown(sm) {
+    --horizontal--item-width: 240px;
+    display: grid;
+    grid-auto-columns: var(--horizontal--item-width);
+    aspect-ratio: revert;
+  }
+  div {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    background-color: #e0e0e0;
+    animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    @include mediaDown(sm) {
+      width: 240px;
+    }
+  }
+}
+
+.skeletonTitle {
+  width: 25%; /* タイトルの幅 */
+  height: 20px; /* タイトルの高さ */
+  background-color: #e0e0e0;
+  border-radius: 4px; /* 角丸 */
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  margin-bottom: 10px;
+}
+
+.skeletonDesc {
+  width: 40%; /* タイトルの幅 */
+  height: 2.5em; /* タイトルの高さ */
+  background-color: #e0e0e0;
+  border-radius: 4px; /* 角丸 */
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  margin-bottom: 10px;
+}
+.skeletonTags {
+  display: grid;
+  grid-template-columns: repeat(3, 6em);
+  gap: 8px;
+
+  span {
+    height: 1em; /* タイトルの高さ */
+    background-color: #e0e0e0;
+    border-radius: 4px; /* 角丸 */
+    animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+/* パルスアニメーション */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

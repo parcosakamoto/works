@@ -139,7 +139,22 @@ const worksItems: WorkItem[] = [
     description:
       "ふたりの人気Poestが贈る<br>ちょっと嬉しい<br>日めくり詩エッセイ",
     tags: ["#デザイン", "#ライティング", "#チラシ・リーフレット"], // 'web' タグ
-    tag: ["write", "etc"],
+    tag: ["web", "write"],
+  },
+  {
+    images: [
+      "/works/sundaycold.png",
+      "/works/sundaycold_1.png",
+      "/works/sundaycold_2.png",
+      "/works/sundaycold_3.png",
+      "/works/sundaycold_4.png",
+    ],
+    link: "https://parco.chobi.net/kaerimasu/have_a_cold_on_sunday.html",
+    title: "日曜日にカゼをひく",
+    description:
+      "過ぎていく空しさ、ちょっとしたハッピイ、<br>そこに在る筆者を、誰もがのぞきこみ、恋をする。",
+    tags: ["#デザイン", "#ライティング", "#新聞"], // 'web' タグ
+    tag: ["web", "write"],
   },
   // 例: Write カテゴリ用のアイテム
   // {
