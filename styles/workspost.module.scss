@@ -41,11 +41,13 @@ $breakpoints: (
         cursor: grabbing;
       }
     }
-    a {
-      &:hover {
-        .description {
-          background-position: bottom left; /* 下線のホバー時位置 */
-          background-size: 100% 1px; /* 下線の横幅を100%にする */
+    @media (any-hover: hover) {
+      a {
+        &:hover {
+          .description {
+            background-position: bottom left; //
+            background-size: 100% 1px; //
+          }
         }
       }
     }
@@ -66,7 +68,7 @@ $breakpoints: (
       font-size: 1.425rem;
       @include mediaDown("sm") {
         padding-inline-start: 1rem;
-        font-size: 1.325rem;
+        font-size: 1.25rem;
       }
     }
     .description {
@@ -84,6 +86,7 @@ $breakpoints: (
       @include mediaDown("sm") {
         display: block;
         padding-inline-start: 1rem;
+        font-size: 0.875rem;
       }
     }
     .tags {
