@@ -18,7 +18,7 @@ export default function Heading({
 }) {
   return (
     <h1 className={`${styles.heading} ${ShipporiMincho.variable}`}>
-      <Link href="/">
+      <Link href="/" className={styles.link}>
         <span className={styles.jp}>{titlejp}</span>
         <span className={styles.en}>{titleen}</span>
       </Link>

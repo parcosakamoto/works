@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import BasicSlider from "./slider";
 import ArticleSkeleton from "./loading"; // スケルトンコンポーネントをインポート
 import styles from "styles/workspost.module.scss";
@@ -175,106 +175,123 @@ const worksItems: WorkItem[] = [
 ];
 
 // sessionStorage で使うキー
+
 const SESSION_STORAGE_KEY = "hasVisitedWorkPostPage";
 
-// Props の型定義
 interface WorkPostProps {
-  activeCategory: string; // 'all', 'web', 'write', 'etc' など
+  activeCategory: string;
 }
 
 export default function WorkPost({ activeCategory }: WorkPostProps) {
-  // Propsを受け取る
   const [works, setWorks] = useState<WorkItem[]>([]);
+  const [visibleCount, setVisibleCount] = useState(5); // ← 初期表示件数
   const [isLoading, setIsLoading] = useState(true);
+  const loaderRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    // 選択されたカテゴリに基づいて worksItems をフィルタリング
-    let filteredWorks = worksItems;
+    let filtered = worksItems;
     if (activeCategory !== "all") {
-      filteredWorks = worksItems.filter(
-        (item) => item.tag.includes(activeCategory) // activeCategory と同じタグを持つものを抽出
-      );
+      filtered = worksItems.filter((item) => item.tag.includes(activeCategory));
     }
-    // else の場合 ('all') はフィルタリングせず全件表示
+    setWorks(filtered);
+    setVisibleCount(5); // ← カテゴリ切り替え時リセット
 
-    // フィルタリングされた結果を state にセット
-    setWorks(filteredWorks);
-
-    // --- ローディング & sessionStorage のロジック (変更なし) ---
     if (typeof window !== "undefined") {
       const hasVisited = sessionStorage.getItem(SESSION_STORAGE_KEY);
-
       if (hasVisited) {
         setIsLoading(false);
       } else {
-        const timer = setTimeout(() => {
-          setIsLoading(false);
-        }, 2500);
+        const timer = setTimeout(() => setIsLoading(false), 2500);
         sessionStorage.setItem(SESSION_STORAGE_KEY, "true");
         return () => clearTimeout(timer);
       }
     } else {
       setIsLoading(false);
     }
-    // --- ローディング & sessionStorage のロジック ここまで ---
-  }, [activeCategory]); // activeCategory が変更されたら useEffect を再実行
+  }, [activeCategory]);
+
+  // === IntersectionObserverで無限スクロール実装 ===
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          setVisibleCount((prev) => {
+            const nextCount = prev + 5;
+            return nextCount <= works.length ? nextCount : works.length;
+          });
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (loaderRef.current) observer.observe(loaderRef.current);
+    return () => {
+      if (loaderRef.current) observer.unobserve(loaderRef.current);
+    };
+  }, [works]);
+
+  const visibleWorks = works.slice(0, visibleCount);
 
   return (
     <div className={styles.container}>
       {isLoading ? (
         <>
-          {/* スケルトンの数は表示される可能性のある最大数に合わせるか、 */}
-          {/* もしくは filteredWorks の数に基づいて動的に変更することも検討できます */}
           <ArticleSkeleton />
           <ArticleSkeleton />
-          {/* 必要ならさらに追加 */}
         </>
-      ) : // works state (フィルタリング済み) を map する
-      works.length > 0 ? ( // フィルタ結果が0件の場合の表示も考慮
-        works.map((item: WorkItem, index: number) => (
-          <article
-            key={index}
-            className={`${styles.article} ${zenKakuGothicNew.className}`}
-          >
-            <BasicSlider images={item.images} />
-            <MouseStalker />
-            <div className={styles.content}>
-              {item.link ? (
-                <a href={item.link} target="_blank" rel="noopener noreferrer">
-                  <h2 className={styles.title}>{item.title}</h2>
-                  <p
-                    className={styles.description}
-                    dangerouslySetInnerHTML={{ __html: item.description }}
-                  />
-                  <p className={styles.tags}>
-                    {item.tags.map((tag: string, tagIndex: number) => (
-                      <span key={tagIndex} className={styles.tag}>
-                        {tag}
-                      </span>
-                    ))}
-                  </p>
-                </a>
-              ) : (
-                <>
-                  <h2 className={styles.title}>{item.title}</h2>
-                  <p
-                    className={styles.description}
-                    dangerouslySetInnerHTML={{ __html: item.description }}
-                  />
-                  <p className={styles.tags}>
-                    {item.tags.map((tag, tagIndex) => (
-                      <span key={tagIndex} className={styles.tag}>
-                        {tag}
-                      </span>
-                    ))}
-                  </p>
-                </>
-              )}
+      ) : works.length > 0 ? (
+        <>
+          {visibleWorks.map((item, index) => (
+            <article
+              key={index}
+              className={`${styles.article} ${zenKakuGothicNew.className}`}
+            >
+              <BasicSlider images={item.images} />
+              <MouseStalker />
+              <div className={styles.content}>
+                {item.link ? (
+                  <a href={item.link} target="_blank" rel="noopener noreferrer">
+                    <h2 className={styles.title}>{item.title}</h2>
+                    <p
+                      className={styles.description}
+                      dangerouslySetInnerHTML={{ __html: item.description }}
+                    />
+                    <p className={styles.tags}>
+                      {item.tags.map((tag, i) => (
+                        <span key={i} className={styles.tag}>
+                          {tag}
+                        </span>
+                      ))}
+                    </p>
+                  </a>
+                ) : (
+                  <>
+                    <h2 className={styles.title}>{item.title}</h2>
+                    <p
+                      className={styles.description}
+                      dangerouslySetInnerHTML={{ __html: item.description }}
+                    />
+                    <p className={styles.tags}>
+                      {item.tags.map((tag, i) => (
+                        <span key={i} className={styles.tag}>
+                          {tag}
+                        </span>
+                      ))}
+                    </p>
+                  </>
+                )}
+              </div>
+            </article>
+          ))}
+          {/* スクロール検知トリガー */}
+          {visibleCount < works.length && (
+            <div ref={loaderRef} className={styles.loaderTrigger}>
+              <ArticleSkeleton />
             </div>
-          </article>
-        ))
+          )}
+        </>
       ) : (
-        // フィルタ結果が0件の場合のメッセージ
         <p>該当する制作物はありません。</p>
       )}
     </div>
