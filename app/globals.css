@@ -108,7 +108,7 @@ div#wrapper {
     -ms-transition: 0.3s ease-out;
     transition: 0.3s ease-out;
     background: #fff;
-    overflow-x: hidden;
+    overflow-x: revert;
     -webkit-overflow-scrolling: touch;
     z-index: 1;
   }
@@ -134,6 +134,7 @@ div#wrapper {
     height: 48px;
     width: 100%;
     float: none;
+    top: 0;
     border-bottom: 1px;
     z-index: 999;
     transition: all 0.3s;

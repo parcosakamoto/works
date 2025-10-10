@@ -260,6 +260,9 @@ export default function WorkPost({ activeCategory }: WorkPostProps) {
         <>
           <ArticleSkeleton />
           <ArticleSkeleton />
+          <ArticleSkeleton />
+          <ArticleSkeleton />
+          <ArticleSkeleton />
         </>
       ) : works.length > 0 ? (
         <>
