@@ -60,6 +60,7 @@ $breakpoints: (
     @include mediaDown("sm") {
       width: 100vw;
       margin-inline: calc(50% - 50vw);
+      overflow: hidden;
     }
     .title {
       font-weight: 400;
