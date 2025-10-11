@@ -27,7 +27,12 @@ $breakpoints: (
 .slideWrapper {
   overflow: revert;
   touch-action: pan-y;
-
+  :global(.swiper) {
+    @include mediaDown("sm") {
+      scroll-behavior: smooth; // ← 慣性を感じる体感を補強
+      -webkit-overflow-scrolling: touch; // ← iOSで特に重要
+    }
+  }
   :global(.swiper-slide) {
     aspect-ratio: 3 / 2;
     @include mediaDown("sm") {

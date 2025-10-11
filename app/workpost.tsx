@@ -144,11 +144,11 @@ const worksItems: WorkItem[] = [
     images: [
       "/works/anchovies_and_cabbage.png",
       "/works/anchovies_and_cabbage_1.png",
-      "/works/anchovies_and_cabbage_2.png",
       "/works/anchovies_and_cabbage_3.png",
       "/works/anchovies_and_cabbage_4.png",
       "/works/anchovies_and_cabbage_5.png",
       "/works/anchovies_and_cabbage_6.png",
+      "/works/anchovies_and_cabbage_7.png",
     ],
     link: "https://parco.chobi.net/anchovies_and_cabbage/",
     title: "アンチョビとキャベツ",

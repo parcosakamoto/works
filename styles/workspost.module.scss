@@ -25,6 +25,9 @@ $breakpoints: (
 }
 
 .container {
+  @include mediaUp("md") {
+    padding-block-end: 3rem;
+  }
   article {
     margin-block-start: 2rem;
     &:not(:first-child) {
@@ -97,11 +100,14 @@ $breakpoints: (
       color: var(--gray-60);
       margin-block-start: 1.25rem;
       text-box: trim-both cap alphabetic;
-
+      position: relative;
       @include mediaDown("sm") {
-        display: revert;
-        padding-inline-start: 1rem;
-        line-height: 1.5;
+        //display: revert;
+        display: flex;
+        overflow-x: scroll;
+        white-space: nowrap;
+        padding-inline: 1rem;
+        //line-height: 1.5;
         opacity: 0.8;
         font-size: 0.75rem;
       }
@@ -109,6 +115,25 @@ $breakpoints: (
         display: inline;
         &:not(:last-child) {
           margin-inline-end: 0.5rem;
+        }
+      }
+      &::after {
+        @include mediaDown("sm") {
+          content: "";
+          display: block;
+          position: fixed;
+          top: 0;
+          right: 0;
+          width: 1.5rem;
+          height: 100%;
+          background-image: -webkit-gradient(
+            linear,
+            left top,
+            right top,
+            from(transparent),
+            to(#fff)
+          );
+          background-image: linear-gradient(to right, transparent, #fff);
         }
       }
     }

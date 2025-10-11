@@ -25,6 +25,14 @@ const BasicSlider = forwardRef<HTMLDivElement, BasicSliderProps>(
       >
         <Swiper
           modules={[Navigation, FreeMode]} // ← FreeModeを追加
+          freeMode={{
+            enabled: true,
+            momentum: true,
+            momentumRatio: 1.6,
+            momentumVelocityRatio: 1.4,
+            sticky: false,
+          }}
+          touchReleaseOnEdges={true}
           breakpoints={{
             0: {
               slidesPerView: "auto",

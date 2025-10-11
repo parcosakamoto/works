@@ -5,7 +5,7 @@
 import Link from "next/link"; // Link は他の場所で使うかもしれませんが、ナビゲーション自体には不要になるかも
 import styles from "styles/main.module.scss";
 import Heading from "./heading";
-import Pagination from "./pagination";
+//import Pagination from "./pagination";
 import WorkPost from "./workpost";
 import { useState, useEffect } from "react"; // useEffect を追加 (初期表示用など)
 
