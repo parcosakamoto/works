@@ -142,6 +142,23 @@ const worksItems: WorkItem[] = [
   },
   {
     images: [
+      "/works/anchovies_and_cabbage.png",
+      "/works/anchovies_and_cabbage_1.png",
+      "/works/anchovies_and_cabbage_2.png",
+      "/works/anchovies_and_cabbage_3.png",
+      "/works/anchovies_and_cabbage_4.png",
+      "/works/anchovies_and_cabbage_5.png",
+      "/works/anchovies_and_cabbage_6.png",
+    ],
+    link: "https://parco.chobi.net/anchovies_and_cabbage/",
+    title: "アンチョビとキャベツ",
+    description:
+      "不寛容さと思いやりは完全に同居し得る。<br>というよりも、それらが同居していない人間などどこにもいない。",
+    tags: ["#デザイン", "#ライティング", "#詩集"], // 'web' タグ
+    tag: ["web", "write"],
+  },
+  {
+    images: [
       "/works/sundaycold.png",
       "/works/sundaycold_1.png",
       "/works/sundaycold_2.png",
@@ -152,7 +169,7 @@ const worksItems: WorkItem[] = [
     title: "日曜日にカゼをひく",
     description:
       "過ぎていく空しさ、ちょっとしたハッピイ、<br>そこに在る筆者を、誰もがのぞきこみ、恋をする。",
-    tags: ["#デザイン", "#ライティング", "#新聞"], // 'web' タグ
+    tags: ["#デザイン", "#ライティング", "#詩集", "#新聞"], // 'web' タグ
     tag: ["web", "write"],
   },
   // 例: Write カテゴリ用のアイテム
