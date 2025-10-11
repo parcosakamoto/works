@@ -30,6 +30,9 @@ $breakpoints: (
 
   :global(.swiper-slide) {
     aspect-ratio: 3 / 2;
+    @include mediaDown("sm") {
+      width: 240px;
+    }
   }
   :global(.swiper-button-next) {
     display: none;
@@ -39,22 +42,17 @@ $breakpoints: (
   }
 
   @include mediaDown("sm") {
-    overflow-x: auto; /* 横スクロール可能 */
-    touch-action: pan-x; /* 横スクロール許可 */
-    --horizontal--item-width: 240px;
-    display: grid;
-    grid-auto-columns: var(--horizontal--item-width);
-    grid-auto-flow: column;
-    column-gap: 1px;
+    // overflow-x: auto; /* 横スクロール可能 */
+    // touch-action: pan-x; /* 横スクロール許可 */
+    // --horizontal--item-width: 240px;
+    // display: grid;
+    // grid-auto-columns: var(--horizontal--item-width);
+    // grid-auto-flow: column;
+    //  column-gap: 1px;
     //scroll-snap-type: x mandatory;
     width: 100%; /* 横スクロールの幅を親要素にあわせる */
-    -webkit-overflow-scrolling: touch; /* iOSスムーススクロール */
-    padding-inline: 1rem;
-    div {
-      width: 240px;
-      scroll-snap-align: start;
-      aspect-ratio: 3 / 2;
-    }
+    // -webkit-overflow-scrolling: touch; /* iOSスムーススクロール */
+    padding-inline: 0.5rem;
   }
 }
 

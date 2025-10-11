@@ -1,55 +1,21 @@
 import Image from "next/image";
-import { Navigation } from "swiper/modules";
+import { Navigation, FreeMode } from "swiper/modules"; // ← FreeModeを追加
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import styles from "styles/slider.module.scss";
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef } from "react";
 
 interface BasicSliderProps {
   images: string[];
+  index?: number;
 }
 
-// forwardRef で ref を受け取る
 const BasicSlider = forwardRef<HTMLDivElement, BasicSliderProps>(
-  ({ images }, ref) => {
-    const [isSwiperEnabled, setIsSwiperEnabled] = useState(false);
+  ({ images, index }, ref) => {
+    const isEager = index === 0 || index === 1; // ← 最初の2件のみ eager
 
-    useEffect(() => {
-      const handleResize = () => {
-        setIsSwiperEnabled(window.innerWidth >= 600);
-      };
-
-      handleResize(); // 初期チェック
-      window.addEventListener("resize", handleResize);
-
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }, []);
-
-    // Swiper無効時の静的表示
-    if (!isSwiperEnabled) {
-      return (
-        <div ref={ref} className={`${styles.slideWrapper} hoverarea`}>
-          {images.map((src: string, index: number) => (
-            <div key={index} className={styles.slideImageWrapper}>
-              <Image
-                src={src}
-                width={600}
-                height={400}
-                alt="Slider Image"
-                sizes="(min-width: 1024px) 100vw, 60vw"
-                className={styles.slideImage}
-              />
-            </div>
-          ))}
-        </div>
-      );
-    }
-
-    // Swiper表示時のスライダー
     return (
       <div
         ref={ref}
@@ -58,36 +24,40 @@ const BasicSlider = forwardRef<HTMLDivElement, BasicSliderProps>(
         }`}
       >
         <Swiper
-          modules={[Navigation]}
+          modules={[Navigation, FreeMode]} // ← FreeModeを追加
           breakpoints={{
-            600: {
+            0: {
+              slidesPerView: "auto",
+              spaceBetween: 1,
+              freeMode: true, // ← モバイル専用オプション
+            },
+            601: {
               slidesPerView: 3,
               spaceBetween: 1,
+              freeMode: false,
             },
             1024: {
               slidesPerView: 3.2,
               spaceBetween: 1,
+              freeMode: false,
             },
           }}
-          slidesPerView={"auto"}
-          centeredSlides={false}
           loop={false}
-          speed={1000}
+          speed={800}
           navigation
-          pagination={{
-            clickable: true,
-          }}
+          pagination={{ clickable: true }}
           className={styles.slideWrapper}
         >
-          {images.map((src: string, index: number) => (
-            <SwiperSlide key={index}>
+          {images.map((src: string, i: number) => (
+            <SwiperSlide key={i}>
               <Image
                 src={src}
                 width={600}
                 height={400}
                 alt="Slider Image"
-                sizes="(min-width: 1024px) 100vw, 60vw"
+                sizes="(max-width: 768px) 90vw, (min-width: 1024px) 100vw, 60vw"
                 className={styles.slideImage}
+                loading={isEager ? "eager" : "lazy"}
               />
             </SwiperSlide>
           ))}

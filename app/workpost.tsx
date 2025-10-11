@@ -21,8 +21,7 @@ interface WorkItem {
   // タグは小文字で統一すると扱いやすい (例: 'web', 'write', 'etc')
 }
 
-// 注意: 現在の worksItems には 'web' タグしかありません。
-// 'write' や 'etc' でフィルタリングするには、対応するタグを持つアイテムを追加する必要があります。
+//  'web''write' や 'etc' でフィルタリング
 const worksItems: WorkItem[] = [
   {
     images: [
@@ -261,8 +260,6 @@ export default function WorkPost({ activeCategory }: WorkPostProps) {
           <ArticleSkeleton />
           <ArticleSkeleton />
           <ArticleSkeleton />
-          <ArticleSkeleton />
-          <ArticleSkeleton />
         </>
       ) : works.length > 0 ? (
         <>
@@ -271,7 +268,8 @@ export default function WorkPost({ activeCategory }: WorkPostProps) {
               key={index}
               className={`${styles.article} ${zenKakuGothicNew.className}`}
             >
-              <BasicSlider images={item.images} />
+              <BasicSlider images={item.images} index={index} />{" "}
+              {/* indexを渡す */}
               {/* マウスストーカーをPCでのみ表示 */}
               {!isMobile && <MouseStalker />} {/* ← 判定を追加 */}
               <div className={styles.content}>
